@@ -22,21 +22,44 @@ public class Video extends ElementoMultimediale implements Riproducibile {
 		this.luminosita = luminosita;
 		
 	}
-
-	public void aumentaLuminosita() {
-		if (luminosita < 10) luminosita++;
+	public void aumentaLuminosita() throws LuminositaNonValidaException {
+		if (luminosita <10) {
+			luminosita++;
+		}else {
+			throw new LuminositaNonValidaException("Luminosita al minimo");
+		}
 	}
 
-	public void diminuisciLuminosita() {
-		if (luminosita > 0) luminosita--;
+	public void diminuisciLuminosita() throws LuminositaNonValidaException {
+		if (luminosita > 0) { 
+			luminosita--;
+		}else {
+			throw new LuminositaNonValidaException("Luminosita al minimo");
+		}
 	}
+	
+	
 
-	public void abbassaVolume() {
-		if (volume > 0) volume--;
+	public int getVolume() {
+		return volume;
 	}
-
-	public void alzaVolume() {
+	public int getLuminosita() {
+		return luminosita;
+	}
+	@Override
+	public void abbassaVolume() throws ValoreVolumeNonValidoException {
+		if(volume > 0)
+			volume--;
+		else {
+			throw new ValoreVolumeNonValidoException("Il volume è già al minimo");
+		}
+	}
+	@Override
+	public void alzaVolume() throws ValoreVolumeNonValidoException {
 		if (volume< 10)volume++;
+		else {
+			throw new ValoreVolumeNonValidoException("hai il volume al massimo");
+		}
 	}
 
 	@Override

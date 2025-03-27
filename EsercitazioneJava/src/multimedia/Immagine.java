@@ -14,19 +14,29 @@ public class Immagine extends ElementoMultimediale {
 		
 		this.luminosita = luminosita;
 	}
+	
+	
 
-	public void aumentaLuminosita() {
-		luminosita++;
+	public int getLuminosita() {
+		return luminosita;
 	}
 
-	public void diminuisciLuminosita() {
-		if (luminosita > 0) 
-			luminosita--;
-		else {
-			System.out.println("Luminosita al minimo");
+
+
+	public void aumentaLuminosita() throws LuminositaNonValidaException {
+		if (luminosita <10) {
+			luminosita++;
+		}else {
+			throw new LuminositaNonValidaException("Luminosita al minimo");
 		}
+	}
 
-
+	public void diminuisciLuminosita() throws LuminositaNonValidaException {
+		if (luminosita > 0) { 
+			luminosita--;
+		}else {
+			throw new LuminositaNonValidaException("Luminosita al minimo");
+		}
 	}
 	
 	public void show() {

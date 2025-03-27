@@ -24,7 +24,15 @@ public class Main {
 		// scritto dentro al for cosi da aver chiarezzza per ogni nuovo inserimento
 		//System.out.println("Inserire  i tipi di elementi multimediale");
 		//System.out.println("digitare: \n1 per video \n2 per audio \n3 per immagine");
-
+		
+		ElementoMultimediale elementoMultimediale = new Audio("ciao", 0, 0);
+		// Esegui il cast a Audio per accedere ai metodi specifici
+		//((Audio) elementoMultimediale).abbassaVolume();
+		//genera errore il volume è al minimo 
+		
+		((Audio) elementoMultimediale).alzaVolume();
+		System.out.println(((Audio) elementoMultimediale).getVolume());
+		
 
 
 		for (int i = 0; i < elementi.length; i++) {
@@ -37,7 +45,7 @@ public class Main {
 
 
 				switch (scelta) {
-				case 1: 
+				case 1: //video
 					System.out.print("Inserisci il titolo: ");
 					String titolo = scanner.nextLine();
 					System.out.println("Inserisci durata: ");
@@ -49,7 +57,7 @@ public class Main {
 					elementi[i] = new Video(titolo, durataVideo, volumeVideo, luminositaVideo);
 					break;
 
-				case 2:
+				case 2: //audio
 					System.out.print("Inserisci il titolo: ");
 					String titolo1 = scanner.nextLine();
 					System.out.println("Inserisci durata: ");
@@ -58,7 +66,7 @@ public class Main {
 					int volumeAudio = scanner.nextInt();
 					elementi[i] = new Audio(titolo1, durataAudio, volumeAudio);
 					break;
-				case 3:
+				case 3: //immagine
 					System.out.print("Inserisci il titolo: ");
 					String titolo2 = scanner.nextLine();
 					System.out.print("Inserisci luminosità: ");
@@ -79,6 +87,8 @@ public class Main {
 			}
 
 		}
+		
+		
 
 		while(true) {
 			System.out.println("inserire il numero dell'elemento multimediale che si vuole eseguire");

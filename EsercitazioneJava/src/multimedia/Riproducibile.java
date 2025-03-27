@@ -1,6 +1,9 @@
 package multimedia;
 
-public interface Riproducibile {
+import exceptions.ValoreVolumeNonValidoException;
 
+public interface Riproducibile {
+	void abbassaVolume()throws ValoreVolumeNonValidoException;
+	void alzaVolume()throws ValoreVolumeNonValidoException;
 	void play();
 }

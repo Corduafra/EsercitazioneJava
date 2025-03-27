@@ -8,28 +8,39 @@ public class Audio extends ElementoMultimediale implements Riproducibile {
 	private int volume;
 	private int durata;
 
-	public Audio(String titolo, int volume, int durata)throws ValoreVolumeNonValidoException, TitoloNonValidoException, DurataNonValidaException{
+	public Audio(String titolo,  int durata, int volume)throws TitoloNonValidoException, ValoreVolumeNonValidoException,  DurataNonValidaException{
 		super(titolo);
-		
+		if(durata < 0) throw new DurataNonValidaException("la durata deve essere positivo");
 		if(volume < 0) throw new ValoreVolumeNonValidoException("il volume non può essere negativo");
-		if(durata < 0) throw new DurataNonValidaException("deve essere positivo");
+		
 		this.durata=durata;
 		this.volume = volume;
 
 	}
+	
+	
 
-	public void abbassaVolume() {
+	public int getVolume() {
+		return volume;
+	}
+
+
+
+	@Override
+	public void abbassaVolume() throws ValoreVolumeNonValidoException {
 		if(volume > 0)
 			volume--;
 		else {
-			System.out.println("Il volume è già al minimo");
+			throw new ValoreVolumeNonValidoException("Il volume è già al minimo");
 		}
 	}
-
-	public void alzaVolume() {
-		volume++;
+	@Override
+	public void alzaVolume() throws ValoreVolumeNonValidoException {
+		if (volume< 10)volume++;
+		else {
+			throw new ValoreVolumeNonValidoException("hai il volume al massimo");
+		}
 	}
-
 
 
 	@Override
@@ -45,3 +56,4 @@ public class Audio extends ElementoMultimediale implements Riproducibile {
 	}
 
 }
+
