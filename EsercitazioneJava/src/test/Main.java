@@ -36,6 +36,16 @@ public class Main {
 
 
 		for (int i = 0; i < elementi.length; i++) {
+			
+			
+			/*
+			 * try catch per ruiscire a catturare gli errori nella fase di inizializzazione nel new
+			 * l'errore non viene riportato subito mentre scriviamo in linea di comando ma durante l'inizializzaizone
+			 * 
+			 * inserito i-- dopo i catch così da continuare l'inserimento dei 5 elementi attesi e il default in caso di inserimento di case sbagliato
+			 * 
+			 */
+			
 			try {
 				//			System.out.print("Inserisci il titolo: ");
 				//            String titolo = scanner.next();
@@ -89,7 +99,11 @@ public class Main {
 		}
 		
 		
-
+		/**
+		 * utilizzato un break per uscire dal ciclio infito del while
+		 * si poteva anche scegliere di fare un do-while
+		 */
+		
 		while(true) {
 			System.out.println("inserire il numero dell'elemento multimediale che si vuole eseguire");
 			int scelta = scanner.nextInt();
